@@ -1,0 +1,22 @@
+body {
+    /* Set the background color to black */
+    background-color: #000000;
+    /* Ensure the body takes up the full screen height */
+    height: 100vh;
+    margin: 0;
+    display: flex;
+    /* Center content horizontally and vertically */
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    /* Optional: Add padding or max-width if needed */
+    text-align: center;
+}
+
+img {
+    /* Optional: Ensure image fits within the viewport if it's very large */
+    max-width: 100%;
+    height: auto;
+}
