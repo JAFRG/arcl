@@ -1,22 +1,136 @@
+/* Reset */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  background: #050505;
+  font-family: Gotham, Montserrat, Helvetica, Arial, sans-serif;
+  color: #f2f2f2;
+}
+
 body {
-    /* Set the background color to black */
-    background-color: #000000;
-    /* Ensure the body takes up the full screen height */
-    height: 100vh;
-    margin: 0;
-    display: flex;
-    /* Center content horizontally and vertically */
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow-x: hidden; 
+  overflow-y: auto;
 }
 
-.container {
-    /* Optional: Add padding or max-width if needed */
-    text-align: center;
+.page {
+  width: 100%;
+  min-height: 100vh;
+  max-height: 100vh; /* Keeps content visible on shorter screens */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  overflow-y: auto;
 }
 
-img {
-    /* Optional: Ensure image fits within the viewport if it's very large */
-    max-width: 100%;
-    height: auto;
+.content {
+  width: 100%;
+  max-width: 1200px;
+  text-align: center;
+  animation: fadeIn 1.6s ease-out forwards;
+}
+
+/* SVG */
+.logo {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto 2.5rem;
+}
+
+.logo svg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Coming soon text styles */
+.coming-soon {
+  margin-top: 1rem;
+  font-size: clamp(1rem, 2.5vw, 1.25rem);
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: #bdbdbd; /* Light gray color */
+}
+
+.divider {
+  width: 80px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #ffffff, transparent);
+  margin: 1.5rem auto;
+  opacity: 0.6;
+}
+
+/* Tagline styles (currently commented out in HTML) */
+.tagline {
+  font-size: clamp(1rem, 3vw, 1.4rem);
+  color: #dcdcdc;
+  margin-bottom: 2rem;
+}
+
+.waitlist {
+  display: flex;
+  justify-content: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  margin-bottom: 0.75rem;
+}
+
+.waitlist input {
+  background: #0e0e0e;
+  border: 1px solid #2a2a2a;
+  color: #ffffff;
+  padding: 0.9rem 1.1rem;
+  min-width: 260px;
+  font-size: 0.95rem;
+  border-radius: 4px;
+  outline: none;
+}
+
+.waitlist input::placeholder {
+  color: #888888;
+}
+
+.waitlist input:focus {
+  border-color: #ffffff;
+}
+
+/* Notify Me button styles */
+.waitlist button {
+  background: #ffffff; /* White background */
+  color: #050505;     /* Dark text */
+  border: none;
+  padding: 0.9rem 1.4rem;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: transform 0.15s ease, opacity 0.15s ease;
+}
+
+.waitlist button:hover {
+  transform: translateY(-1px);
+  opacity: 0.9;
+}
+
+/* Privacy text styles (currently commented out in HTML) */
+.privacy {
+  font-size: 0.75rem;
+  color: #8a8a8a;
+}
+
+/* Fade animation */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
 }
