@@ -80,6 +80,58 @@
     .tagline {
       font-size: clamp(1rem, 3vw, 1.4rem);
       color: #dcdcdc;
+      margin-bottom: 2rem;
+    }
+
+    .waitlist {
+      display: flex;
+      justify-content: center;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+      margin-bottom: 0.75rem;
+    }
+
+    .waitlist input {
+      background: #0e0e0e;
+      border: 1px solid #2a2a2a;
+      color: #ffffff;
+      padding: 0.9rem 1.1rem;
+      min-width: 260px;
+      font-size: 0.95rem;
+      border-radius: 4px;
+      outline: none;
+    }
+
+    .waitlist input::placeholder {
+      color: #888888;
+    }
+
+    .waitlist input:focus {
+      border-color: #ffffff;
+    }
+
+    .waitlist button {
+      background: #ffffff;
+      color: #050505;
+      border: none;
+      padding: 0.9rem 1.4rem;
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      cursor: pointer;
+      border-radius: 4px;
+      transition: transform 0.15s ease, opacity 0.15s ease;
+    }
+
+    .waitlist button:hover {
+      transform: translateY(-1px);
+      opacity: 0.9;
+    }
+
+    .privacy {
+      font-size: 0.75rem;
+      color: #8a8a8a;
     }
 
     /* Fade animation */
@@ -139,12 +191,17 @@
       <div class="divider"></div>
 
       <div class="coming-soon">Coming Soon</div>
-      <!--<p class="tagline">We are building something powerful.</p>-->
+      <p class="tagline"></p>
+
+      <form class="waitlist" action="#" method="post" onsubmit="return false;">
+        <input type="email" name="email" placeholder="Enter your email" required aria-label="Email address" />
+        <button type="submit">Notify Me</button>
+      </form>
+
+      <!--<p class="privacy">No spam. Just a single notification when we launch.</p>-->
 
     </section>
   </main>
 
 </body>
 </html>
-
-<!--Archligh - From Darkness to Light! @Copyright 2025 -->
