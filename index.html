@@ -3,11 +3,18 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <meta name="description" content="Arc Light - from darkness to design">
+  <meta property="og:title" content="Arc Light">
+  <meta property="og:description" content="Join the Arc Light waitlist.">
+  <meta property="og:type" content="website">
+
   <title>arc light</title>
 
   <!-- Font fallback similar to Gotham -->
-  <link href="https://fonts.googleapis.com" rel="stylesheet">
-  
+  <!--<link href="https://fonts.cdnfonts.com/css/gotham-9" rel="stylesheet">-->
+  <link href="fonts/Gotham Narrow Thin.otf" rel="stylesheet">
+
   <!-- Link to the external CSS file -->
   <link rel="stylesheet" href="styles.css">
 </head>
@@ -15,20 +22,33 @@
   <main class="page">
     <section class="content">
       <div class="logo">
-        <!-- Replaced the original <svg> content with an external reference -->
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -50 1000 700" role="img" aria-label="arc light Logo">
-          <!-- Use the image tag to link the external SVG file -->
-          <!-- The x, y, width, and height attributes help position the image within the existing viewBox -->
-          <image href="arcl1.svg" x="0" y="0" width="100%" height="100%" preserveAspectRatio="xMidYMid meet"/>
-        </svg>
+        <img src="arcl1.svg" alt="Arc Light logo">
       </div>
 
       <div class="divider"></div>
 
-      <form class="waitlist" action="#" method="post" onsubmit="return false;">
-        <input type="email" name="email" placeholder="Enter your email" required aria-label="Email address" />
-        <button type="submit">Notify Me</button>
+      <form class="waitlist" id="waitlist" action="https://formsubmit.co/b53b37c9b6273b94aef873215f74e0b6" method="POST">
+        <div class="controls">
+          <input id="email" type="email" name="email" placeholder="Enter your email" required aria-label="Email address" />
+          <button type="submit">Notify Me</button>
+        </div>
+
+        <input type="hidden" name="_subject" value="New Arc Light signup">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_template" value="table">
+
+        <p class="success-message" aria-live="polite">
+          Thank you. We will notify you!
+        </p>
       </form>
+      <script>
+        const form = document.querySelector('.waitlist');
+
+        form.addEventListener('submit', e => {
+          e.preventDefault();
+          form.classList.add('success');
+        });
+      </script>
     </section>
   </main>
 </body>

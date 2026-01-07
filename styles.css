@@ -9,27 +9,26 @@ html, body {
   width: 100%;
   height: 100%;
   background: #050505;
-  font-family: Gotham, Montserrat, Helvetica, Arial, sans-serif;
-  color: #f2f2f2;
+  /*050505*/
+  /*705536*/
 }
 
 body {
   display: flex;
   align-items: center;
   justify-content: center;
-  overflow-x: hidden; 
+  overflow-x: hidden;
   overflow-y: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 .page {
-  width: 100%;
   min-height: 100vh;
-  max-height: 100vh; /* Keeps content visible on shorter screens */
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 2rem;
-  overflow-y: auto;
 }
 
 .content {
@@ -41,47 +40,35 @@ body {
 
 /* SVG */
 .logo {
-  width: 100%;
-  max-width: 1200px;
+  width: clamp(220px, 40vw, 520px);
   margin: 0 auto 2.5rem;
 }
-
-.logo svg {
-  width: 100%;
-  height: auto;
-  display: block;
-}
-
-/* Coming soon text styles */
-.coming-soon {
-  margin-top: 1rem;
-  font-size: clamp(1rem, 2.5vw, 1.25rem);
-  letter-spacing: 0.25em;
-  text-transform: uppercase;
-  color: #bdbdbd; /* Light gray color */
-}
+/*.logo {
+  width: 50%;
+  max-width: 1200px;
+  margin: 0 auto 2.5rem;
+}*/
 
 .divider {
   width: 80px;
   height: 2px;
   background: linear-gradient(90deg, transparent, #ffffff, transparent);
   margin: 1.5rem auto;
-  opacity: 0.6;
-}
-
-/* Tagline styles (currently commented out in HTML) */
-.tagline {
-  font-size: clamp(1rem, 3vw, 1.4rem);
-  color: #dcdcdc;
-  margin-bottom: 2rem;
+  opacity: 0.45;
 }
 
 .waitlist {
+  font-family: 'Gotham', sans-serif;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
   gap: 0.75rem;
-  flex-wrap: wrap;
   margin-bottom: 0.75rem;
+}
+
+.waitlist input,
+.waitlist button {
+  font-family: 'GothamNarrow-Thin', sans-serif;
 }
 
 .waitlist input {
@@ -101,6 +88,7 @@ body {
 
 .waitlist input:focus {
   border-color: #ffffff;
+  box-shadow: 0 0 0 2px rgba(255,255,255,0.12);
 }
 
 /* Notify Me button styles */
@@ -116,6 +104,7 @@ body {
   cursor: pointer;
   border-radius: 4px;
   transition: transform 0.15s ease, opacity 0.15s ease;
+  user-select: none;
 }
 
 .waitlist button:hover {
@@ -123,14 +112,63 @@ body {
   opacity: 0.9;
 }
 
-/* Privacy text styles (currently commented out in HTML) */
-.privacy {
-  font-size: 0.75rem;
-  color: #8a8a8a;
-}
-
 /* Fade animation */
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(16px); }
   to { opacity: 1; transform: translateY(0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .content {
+    animation: none;
+  }
+}
+
+.waitlist button:active {
+  transform: translateY(0);
+  opacity: 0.85;
+}
+
+
+.success-message {
+  font-family: 'Gotham', sans-serif;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #ffffff;
+  opacity: 0;
+  transition: opacity 0.6s ease, transform 0.6s ease;
+  text-align: center;
+  width: 100%;
+}
+
+/* When active */
+.waitlist.success .success-message {
+  opacity: 0.9;
+  transform: translateY(0);
+}
+
+/* Fade out form controls */
+.waitlist.success input,
+.waitlist.success button {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Smooth transition for controls */
+.waitlist input,
+.waitlist button {
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.waitlist.success .controls {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.controls {
+  display: flex;
+  justify-content: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  transition: opacity 0.4s ease, transform 0.4s ease;
 }
