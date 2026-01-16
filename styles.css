@@ -38,24 +38,34 @@ body {
   animation: fadeIn 1.6s ease-out forwards;
 }
 
-/* SVG */
-.logo {
-  width: clamp(220px, 40vw, 520px);
-  margin: 0 auto 2.5rem;
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centers the top div */
+  width: 100%;
+  gap: 40px;
 }
-/*.logo {
-  width: 50%;
-  max-width: 1200px;
-  margin: 0 auto 2.5rem;
-}*/
+
+.logo {
+  width: clamp(220px, 40vw, 400px);
+  padding: 10px;
+}
+
+.comingSoon {
+  width: clamp(220px, 40vw, 300px);
+  padding: 5px;
+  /* Shift left edge to the center of the container (and top div) */
+  align-self: flex-start;
+  margin-left: 50%;
+}
 
 .divider {
+  gap: 40px;
   width: 80px;
   height: 2px;
   background: linear-gradient(90deg, transparent, #ffffff, transparent);
-  margin: 2rem auto;
-  opacity: 0.45;
-  margin-top: 10rem;
+  opacity: 0.6;
+  margin: 10rem auto 2rem;
 }
 
 .waitlist {
