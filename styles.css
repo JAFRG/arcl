@@ -60,7 +60,6 @@ body {
 }
 
 .divider {
-  gap: 40px;
   width: 80px;
   height: 2px;
   background: linear-gradient(90deg, transparent, #ffffff, transparent);
