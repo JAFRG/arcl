@@ -57,7 +57,11 @@ body {
   /* Shift left edge to the center of the container (and top div) */
   align-self: flex-start;
   margin-left: 50%;
-}
+}/*
+.comingSoon {
+  width: clamp(220px, 40vw, 310px);
+  height: auto;
+}*/
 
 .divider {
   width: 80px;
