@@ -52,42 +52,28 @@ body {
   gap: 40px;
 }
 
-.logo img, 
-.comingSoon img {
+.main-logo img {
   max-width: 100%;
   height: auto;
   display: block;
 }
 
-.logo {
-  width: clamp(220px, 40vw, 600px);
+.main-logo {
+  width: clamp(300px, 80vw, 800px);
   padding: 10px;
   display: flex;
   justify-content: center;
   position: relative;
 }
 
-.logo img {
-  width: 100%;
-}
-
-.comingSoon {
-  width: clamp(220px, 40vw, 500px);
-  /* Shift left edge to align 'c' with 'l' in the logo */
-  /* 'l' in logo is at ~52% of logo width */
-  align-self: flex-start;
-  margin-left: calc(50% + (min(90vw - 40px, 600px) * 0.5198) - (min(90vw - 40px, 600px) / 2));
+.main-logo img {
+  width: 50%;
 }
 
 @media screen and (max-width: 480px) {
-  .logo {
-    width: 90vw; /* Bigger on mobile */
-    max-width: 90vw;
-  }
-  .comingSoon {
-    width: 70%;
-    margin-left: calc(50% + (90vw * 0.5198) - (90vw / 2));
-    align-self: flex-start;
+  .main-logo {
+    width: 95vw;
+    max-width: 95vw;
   }
 }
 
