@@ -59,7 +59,7 @@ body {
 }
 
 .main-logo {
-  width: clamp(300px, 90vw, 800px);
+  width: clamp(300px, 90vw, 900px);
   padding: 10px;
   display: flex;
   justify-content: center;
