@@ -14,8 +14,12 @@ html, body {
   width: 100%;
   height: 100%;
   background: #050505;
-  /*050505*/
-  /*705536*/
+  /* Subtle grain/noise effect and dark gradient */
+  background-image: 
+    radial-gradient(circle at 50% 50%, rgba(20, 20, 20, 1) 0%, rgba(5, 5, 5, 1) 100%),
+    url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3%3Cfilter id='noiseFilter'%3%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  background-blend-mode: overlay;
+  background-attachment: fixed;
 }
 
 body {
@@ -88,11 +92,28 @@ body {
 }
 
 .divider {
-  width: 80px;
-  height: 2px;
-  background: linear-gradient(90deg, transparent, #ffffff, transparent);
-  opacity: 0.6;
+  width: 100px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.8), transparent);
   margin: 6rem auto 2rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.divider::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+  animation: shimmer 3s infinite linear;
+}
+
+@keyframes shimmer {
+  0% { left: -100%; }
+  100% { left: 100%; }
 }
 
 @media screen and (max-width: 480px) {
@@ -116,24 +137,65 @@ body {
 }
 
 .waitlist input {
-  background: #0e0e0e;
-  border: 1px solid #2a2a2a;
+  background: rgba(14, 14, 14, 0.6);
+  backdrop-filter: blur(4px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   color: #ffffff;
   padding: 0.9rem 1.1rem;
   width: 100%;
   max-width: 320px;
-  font-size: 0.95rem;
-  border-radius: 4px;
+  font-size: 0.9rem;
+  border-radius: 2px;
   outline: none;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  letter-spacing: 0.05em;
 }
 
 .waitlist input::placeholder {
-  color: #888888;
+  color: #555555;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-size: 0.7rem;
 }
 
 .waitlist input:focus {
-  border-color: #ffffff;
-  box-shadow: 0 0 0 2px rgba(255,255,255,0.12);
+  border-color: rgba(255, 255, 255, 0.4);
+  background: rgba(20, 20, 20, 0.8);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+}
+
+/* Notify Me button styles */
+.waitlist button {
+  background: #ffffff;
+  color: #050505;
+  border: none;
+  padding: 0.9rem 2rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  cursor: pointer;
+  border-radius: 2px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  user-select: none;
+  position: relative;
+  overflow: hidden;
+}
+
+.waitlist button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(255, 255, 255, 0.1);
+  background: #f0f0f0;
+}
+
+.waitlist button:active {
+  transform: translateY(0);
+}
+
+.waitlist button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
 }
 
 .confirm-field {
@@ -143,28 +205,6 @@ body {
   visibility: hidden;
 }
 
-/* Notify Me button styles */
-.waitlist button {
-  background: #ffffff; /* White background */
-  color: #050505;     /* Dark text */
-  border: none;
-  padding: 0.9rem 1.4rem;
-  font-size: 0.85rem;
-  font-weight: 700;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  cursor: pointer;
-  border-radius: 4px;
-  transition: transform 0.15s ease, opacity 0.15s ease;
-  user-select: none;
-}
-
-.waitlist button:hover {
-  transform: translateY(-1px);
-  opacity: 0.9;
-}
-
-/* Fade animation */
 @keyframes fadeIn {
   from { opacity: 0; }
   to { opacity: 1; }
@@ -174,17 +214,6 @@ body {
   .content {
     animation: none;
   }
-}
-
-.waitlist button:disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
-  transform: none;
-}
-
-.waitlist button:active {
-  transform: translateY(0);
-  opacity: 0.85;
 }
 
 .success-message {
