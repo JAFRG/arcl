@@ -59,15 +59,16 @@ body {
 }
 
 .main-logo {
-  width: clamp(300px, 80vw, 800px);
+  width: clamp(300px, 90vw, 800px);
   padding: 10px;
   display: flex;
   justify-content: center;
   position: relative;
+  overflow: visible;
 }
 
 .main-logo img {
-  width: 50%;
+  width: 75%;
 }
 
 @media screen and (max-width: 480px) {
