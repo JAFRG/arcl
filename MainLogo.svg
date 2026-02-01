@@ -46,7 +46,7 @@
     <!-- 'c' in ComingSoon is at x = 0 -->
     <!-- To align 'c' with 'l', translate by 357.385 -->
     <!-- Vertical position: After ARCLight (141.98) + gap (requested increase) -->
-    <g transform="translate(357.385, 260)">
+    <g transform="translate(357.385, 200)">
         <g id="Camada_2">
             <g id="Camada_1-2">
                 <path class="cls-1" d="M0,27v-.24C0,17.64,5.82,11,13.08,11a12.17,12.17,0,0,1,9.3,4.32l-.9.9a11.07,11.07,0,0,0-8.46-4c-6.54,0-11.7,6.12-11.7,14.46V27c0,8.46,5.1,14.52,11.64,14.52,3.9,0,6.54-1.92,8.64-4.26l.9.84c-2.34,2.58-5.22,4.62-9.6,4.62C5.64,42.72,0,36.36,0,27Z"/>
