@@ -32,7 +32,8 @@ body {
 }
 
 .content {
-  width: 100%;
+  width: clamp(500px, 50vw, 700px);
+  padding: 50px;
   max-width: 1200px;
   text-align: center;
   animation: fadeIn 1.6s ease-out forwards;
