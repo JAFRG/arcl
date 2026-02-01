@@ -16,14 +16,14 @@
   <!-- <link rel="icon" type="image/svg+xml" href="ARCLight.svg"> -->
 
   <!-- Link to the external CSS file -->
-  <link rel="stylesheet" href="styles.css?1.0.7">
+  <link rel="stylesheet" href="styles.css?1.1.2">
 </head>
 <body>
   <main class="page">
     <section class="content">
       <div class="container">
         <div class="main-logo">
-          <img src="MainLogo.svg?1.0.7" alt="Arc Light logo">
+          <img src="MainLogo.svg?1.1.2" alt="Arc Light logo">
         </div>
       </div>
 
@@ -49,6 +49,14 @@
       </form>
       <script>
         const form = document.querySelector('.waitlist');
+
+        // Interactive mouse glow effect
+        document.addEventListener('mousemove', (e) => {
+          const x = (e.clientX / window.innerWidth) * 100;
+          const y = (e.clientY / window.innerHeight) * 100;
+          document.documentElement.style.setProperty('--mouse-x', `${x}%`);
+          document.documentElement.style.setProperty('--mouse-y', `${y}%`);
+        });
 
         form.addEventListener("submit", async (event) => {
           event.preventDefault(); // Stops the redirect/new tab

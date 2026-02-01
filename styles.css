@@ -11,13 +11,15 @@
 }
 
 html, body {
+  --mouse-x: 50%;
+  --mouse-y: 50%;
   width: 100%;
   height: 100%;
-  background: #050505;
+  background-color: #050505;
   /* Subtle grain/noise effect and dark gradient */
   background-image: 
-    radial-gradient(circle at 50% 50%, rgba(20, 20, 20, 1) 0%, rgba(5, 5, 5, 1) 100%),
-    url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3%3Cfilter id='noiseFilter'%3%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+    radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%), #1e1e1e 0%, #050505 80%),
+    url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
   background-blend-mode: overlay;
   background-attachment: fixed;
 }
@@ -51,7 +53,34 @@ body {
   max-width: 1000px;
   padding: 40px 20px;
   text-align: center;
-  animation: fadeIn 1.6s ease-out forwards;
+}
+
+.main-logo, .divider, .waitlist {
+  opacity: 0;
+  animation: reveal 1.2s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}
+
+.main-logo {
+  animation-delay: 0.2s;
+}
+
+.divider {
+  animation-delay: 0.5s;
+}
+
+.waitlist {
+  animation-delay: 0.8s;
+}
+
+@keyframes reveal {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .container {
@@ -95,7 +124,7 @@ body {
   width: 100px;
   height: 1px;
   background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.8), transparent);
-  margin: 6rem auto 2rem;
+  margin: 4rem auto 2rem;
   position: relative;
   overflow: hidden;
 }
@@ -137,9 +166,9 @@ body {
 }
 
 .waitlist input {
-  background: rgba(14, 14, 14, 0.6);
-  backdrop-filter: blur(4px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(20, 20, 20, 0.7);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
   color: #ffffff;
   padding: 0.9rem 1.1rem;
   width: 100%;
@@ -152,7 +181,7 @@ body {
 }
 
 .waitlist input::placeholder {
-  color: #555555;
+  color: #999999;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   font-size: 0.7rem;
@@ -183,9 +212,24 @@ body {
 }
 
 .waitlist button:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 10px 20px rgba(255, 255, 255, 0.1);
-  background: #f0f0f0;
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 10px 20px rgba(255, 255, 255, 0.15);
+  background: #ffffff;
+}
+
+.waitlist button:hover::before {
+  left: 100%;
+}
+
+.waitlist button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(0, 0, 0, 0.05), transparent);
+  transition: left 0.6s ease;
 }
 
 .waitlist button:active {
@@ -232,10 +276,11 @@ body {
 
 /* When active */
 .waitlist.success .success-message {
-  opacity: 0.9;
+  opacity: 1;
   visibility: visible;
   height: auto;
   transform: translateY(0);
+  padding: 1rem 0;
 }
 
 /* Fade out form controls */
