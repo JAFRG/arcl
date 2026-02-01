@@ -32,7 +32,8 @@ body {
 }
 
 .content {
-  width: 100%;
+  width: clamp(500px, 50vw, 1000px);
+  padding: 50px;
   max-width: 1200px;
   text-align: center;
   animation: fadeIn 1.6s ease-out forwards;
@@ -47,21 +48,17 @@ body {
 }
 
 .logo {
-  width: clamp(220px, 40vw, 400px);
+  width: clamp(220px, 40vw, 600px);
   padding: 10px;
 }
 
 .comingSoon {
-  width: clamp(220px, 40vw, 310px);
-  padding: 7.73px;
+  width: clamp(220px, 40vw, 500px);
+  padding: 7.5px;
   /* Shift left edge to the center of the container (and top div) */
   align-self: flex-start;
   margin-left: 50%;
-}/*
-.comingSoon {
-  width: clamp(220px, 40vw, 310px);
-  height: auto;
-}*/
+}
 
 .divider {
   width: 80px;
