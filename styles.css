@@ -84,7 +84,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-bottom: 2rem;
+  margin-bottom: 5rem;
 }
 
 .main-logo, .divider, .waitlist {
@@ -149,7 +149,8 @@ body {
   }
   .main-logo img {
     width: 100%;
-    transform: scale(1.05);
+    transform: scale(1.25);
+    transform-origin: center center;
   }
 }
 
