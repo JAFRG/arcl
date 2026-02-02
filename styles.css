@@ -197,6 +197,10 @@ body {
   font-size: 16px;
 }
 
+.waitlist input:focus::placeholder {
+  color: transparent;
+}
+
 .waitlist input:focus {
   border-color: rgba(255, 255, 255, 0.6);
   background: rgba(20, 20, 20, 0);
