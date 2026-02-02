@@ -21,15 +21,16 @@
 <body>
   <main class="page">
     <section class="content">
-      <div class="container">
+      <div class="logo-section">
         <div class="main-logo">
           <img src="MainLogo.svg?1.1.2" alt="Arc Light logo">
         </div>
       </div>
 
-      <div class="divider"></div>
+      <div class="bottom-section">
+        <div class="divider"></div>
 
-      <form class="waitlist" id="waitlist" action="https://formsubmit.co/b53b37c9b6273b94aef873215f74e0b6" method="POST">
+        <form class="waitlist" id="waitlist" action="https://formsubmit.co/b53b37c9b6273b94aef873215f74e0b6" method="POST">
         <div class="controls">
           <input id="email" type="email" name="email" placeholder="Enter your email" required aria-label="Email address" />
           <button type="submit">Notify Me</button>
@@ -47,27 +48,9 @@
           Thank you. We will notify you!
         </p>
       </form>
+      </div>
       <script>
         const form = document.querySelector('.waitlist');
-
-        // Interactive mouse glow effect with requestAnimationFrame for performance
-        let mouseX = 50;
-        let mouseY = 50;
-        let ticking = false;
-
-        document.addEventListener('mousemove', (e) => {
-          mouseX = e.clientX;
-          mouseY = e.clientY;
-
-          if (!ticking) {
-            window.requestAnimationFrame(() => {
-              document.body.style.setProperty('--mouse-x', `${mouseX}px`);
-              document.body.style.setProperty('--mouse-y', `${mouseY}px`);
-              ticking = false;
-            });
-            ticking = true;
-          }
-        });
 
         form.addEventListener("submit", async (event) => {
           event.preventDefault(); // Stops the redirect/new tab

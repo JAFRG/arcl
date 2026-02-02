@@ -14,20 +14,8 @@ html, body {
   width: 100%;
   height: 100%;
   background-color: #050505;
-}
-
-/* Background gradient layer for better performance */
-body::after {
-  content: "";
-  position: fixed;
-  top: -50vh;
-  left: -50vw;
-  width: 100vw;
-  height: 100vh;
-  pointer-events: none;
-  background-image: radial-gradient(circle at center, #1e1e1e 0%, #050505 80%);
-  z-index: -2;
-  transform: translate(var(--mouse-x, 50vw), var(--mouse-y, 50vh)) translateZ(0);
+  margin: 0;
+  padding: 0;
 }
 
 /* Noise overlay as a pseudo-element for better performance */
@@ -39,22 +27,21 @@ body::before {
   width: 100%;
   height: 100%;
   pointer-events: none;
-  /* Replaced live SVG filter with a static base64 noise pattern to eliminate expensive repaints during zoom */
+  /* Lightweight noise pattern */
   background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyBAAAAAC7mC9gAAAAAnRSTlMAAHaTzTgAAAAqSURBVEjH7YyxAQAACAOifv/fW0N0AnG7mS0iInp9H2PzJRERERERERE99S8DAn7vX7wAAAAASUVORK5CYII=");
   background-repeat: repeat;
   background-size: 100px 100px;
   background-blend-mode: overlay;
-  opacity: 0.08; /* Lowered slightly for the new pattern */
+  opacity: 0.05;
   z-index: -1;
-  transform: translateZ(0); /* Force GPU acceleration */
+  /* Fixed background hack for some iOS versions */
+  -webkit-transform: translateZ(0);
 }
 
 body {
-  --mouse-x: 50vw;
-  --mouse-y: 50vh;
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: center;
   overflow-x: hidden;
   overflow-y: auto;
   -webkit-font-smoothing: antialiased;
@@ -63,23 +50,38 @@ body {
 
 .page {
   min-height: 100vh;
+  width: 100%;
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  padding: 2rem;
-}
-
-@media screen and (max-height: 800px) {
-  body, .page {
-    align-items: flex-start;
-  }
+  padding: 4rem 2rem;
 }
 
 .content {
   width: 90vw;
   max-width: 1000px;
-  padding: 40px 20px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  padding: 0;
   text-align: center;
+}
+
+.logo-section {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.bottom-section {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 4rem;
 }
 
 .main-logo, .divider, .waitlist {
@@ -115,7 +117,6 @@ body {
   flex-direction: column;
   align-items: center; /* Centers the top div */
   width: 100%;
-  gap: 40px;
 }
 
 .main-logo img {
@@ -134,7 +135,7 @@ body {
 }
 
 .main-logo img {
-  width: 75%;
+  width: 90%;
 }
 
 @media screen and (max-width: 480px) {
@@ -151,27 +152,9 @@ body {
   width: 100px;
   height: 1px;
   background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.8), transparent);
-  margin: 4rem auto 2rem;
+  margin: 2rem auto 2rem;
   position: relative;
   overflow: hidden;
-  transform: translateZ(0); /* Promote to own layer */
-}
-
-.divider::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
-  animation: shimmer 3s infinite linear;
-  transform: translateZ(0); /* Promote to own layer */
-}
-
-@keyframes shimmer {
-  0% { left: -100%; }
-  100% { left: 100%; }
 }
 
 @media screen and (max-width: 480px) {
@@ -185,8 +168,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0.75rem;
-  margin-bottom: 0.75rem;
+  width: 100%;
 }
 
 .waitlist input,
@@ -235,34 +217,16 @@ body {
   border-radius: 2px;
   transition: background-color 0.3s cubic-bezier(0.4, 0, 0.2, 1), color 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1), transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   user-select: none;
-  position: relative;
-  overflow: hidden;
-  transform: translateZ(0); /* Promote to own layer */
 }
 
 .waitlist button:hover {
-  transform: translateY(-2px) scale(1.02) translateZ(0);
+  transform: translateY(-2px);
   box-shadow: 0 10px 20px rgba(255, 255, 255, 0.15);
   background: #ffffff;
 }
 
-.waitlist button:hover::before {
-  left: 100%;
-}
-
-.waitlist button::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(0, 0, 0, 0.05), transparent);
-  transition: left 0.6s ease;
-}
-
 .waitlist button:active {
-  transform: translateY(0) translateZ(0);
+  transform: translateY(0);
 }
 
 .waitlist button:disabled {
@@ -308,7 +272,7 @@ body {
   opacity: 1;
   visibility: visible;
   height: auto;
-  transform: translateY(0) translateZ(0);
+  transform: translateY(0);
   padding: 1rem 0;
 }
 
@@ -333,7 +297,19 @@ body {
 .controls {
   display: flex;
   justify-content: center;
+  align-items: center;
   gap: 0.75rem;
-  flex-wrap: wrap;
+  width: 100%;
+  max-width: 500px;
   transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+@media screen and (max-width: 600px) {
+  .controls {
+    flex-direction: column;
+  }
+  .waitlist input, .waitlist button {
+    max-width: 100%;
+    width: 100%;
+  }
 }
