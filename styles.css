@@ -177,13 +177,13 @@ body {
 }
 
 .waitlist input {
-  background: rgba(20, 20, 20, 0.7);
-  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: rgba(20, 20, 20, 0);
+  border: 1px solid rgba(255, 255, 255, 0.25);
   color: #ffffff;
-  padding: 0.9rem 1.1rem;
+  padding: 0.7rem 0.9rem;
   width: 100%;
   max-width: 320px;
-  font-size: 16px; /* Prevents auto-zoom on iOS when focusing */
+  font-size: 16px; /* 16px Prevents auto-zoom on iOS when focusing */
   border-radius: 2px;
   outline: none;
   transition: border-color 0.3s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -194,12 +194,12 @@ body {
   color: #999999;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  font-size: 0.7rem;
+  font-size: 1rem;
 }
 
 .waitlist input:focus {
-  border-color: rgba(255, 255, 255, 0.4);
-  background: rgba(20, 20, 20, 0.8);
+  border-color: rgba(255, 255, 255, 0.6);
+  background: rgba(20, 20, 20, 0);
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
 }
 
