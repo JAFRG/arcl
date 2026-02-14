@@ -177,6 +177,7 @@ body {
   flex-direction: column;
   align-items: center;
   width: 100%;
+  position: relative;
 }
 
 .waitlist input,
@@ -272,20 +273,20 @@ body {
   color: #ffffff;
   opacity: 0;
   visibility: hidden;
-  height: 0;
-  overflow: hidden;
-  transition: opacity 0.6s ease, transform 0.6s ease, visibility 0.6s ease;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition: opacity 0.6s ease, visibility 0.6s ease;
   text-align: center;
   width: 100%;
+  white-space: nowrap;
 }
 
 /* When active */
 .waitlist.success .success-message {
   opacity: 1;
   visibility: visible;
-  height: auto;
-  transform: translateY(0);
-  padding: 0.5rem 0;
 }
 
 /* Fade out form controls */
