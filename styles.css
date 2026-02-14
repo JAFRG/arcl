@@ -216,6 +216,17 @@ body {
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
 }
 
+/* Autofill styles to maintain design when browser suggests email */
+.waitlist input:-webkit-autofill,
+.waitlist input:-webkit-autofill:hover,
+.waitlist input:-webkit-autofill:focus,
+.waitlist input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 100px #050505 inset !important;
+  -webkit-text-fill-color: #ffffff !important;
+  caret-color: #ffffff !important;
+  transition: background-color 5000s ease-in-out 0s;
+}
+
 /* Notify Me button styles */
 .waitlist button {
   background: #ffffff;
